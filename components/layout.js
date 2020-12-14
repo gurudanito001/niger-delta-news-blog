@@ -2,19 +2,25 @@ import Head from 'next/head'
 import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
+import Form from 'react-bootstrap/Form'
+import Container from 'react-bootstrap/Container'
 
-const name = 'Daniel'
-export const siteTitle = 'Next.js Sample Website'
+//const name = 'Daniel'
+export const siteTitle = 'Niger Delta News Blog'
 
-export default function Layout({ children, home }) {
+export default function Layout({ children }) {
     return (
-      <div className={styles.container}>
+      <div>
         <Head>
           <link rel="icon" href="/favicon.ico" />
           <meta
             name="description"
-            content="Learn how to build a personal website using Next.js"
+            content="Niger Delta News Blog"
           />
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" 
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossOrigin="anonymous"></link>
           <meta
             property="og:image"
             content={`https://og-image.now.sh/${encodeURI(
@@ -24,43 +30,76 @@ export default function Layout({ children, home }) {
           <meta name="og:title" content={siteTitle} />
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
-        <header className={styles.header}>
-          {home ? (
-            <>
-              <img
-                src="/images/profile.jpg"
-                className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
-                alt={name}
-              />
-              <h1 className={utilStyles.heading2Xl}>{name}</h1>
-            </>
-          ) : (
-            <>
-              <Link href="/">
-                <a>
-                  <img
-                    src="/images/profile.jpg"
-                    className={`${styles.headerImage} ${utilStyles.borderCircle}`}
-                    alt={name}
-                  />
-                </a>
-              </Link>
-              <h2 className={utilStyles.headingLg}>
-                <Link href="/">
-                  <a className={utilStyles.colorInherit}>{name}</a>
-                </Link>
-              </h2>
-            </>
-          )}
-        </header>
-        <main>{children}</main>
-        {!home && (
-          <div className={styles.backToHome}>
+
+
+
+          <Navbar collapseOnSelect expand="lg" className="border-bottom sticky-top mb-4" bg="dark" variant="dark">
             <Link href="/">
-              <a>← Back to home</a>
+              <a><Navbar.Brand>News Blog</Navbar.Brand></a>
             </Link>
-          </div>
-        )}
+            
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="mr-auto">
+                <Nav.Link href="#politics" className={styles.navLink}>Politics</Nav.Link>
+                <Nav.Link href="#business" className={styles.navLink}>Business</Nav.Link>
+                <Nav.Link href="#local" className={styles.navLink}>Local News</Nav.Link>
+                <Nav.Link href="#health" className={styles.navLink}>Health</Nav.Link>
+                <Nav.Link href="#sports" className={styles.navLink}>Sports</Nav.Link>
+                <Nav.Link href="#entertainment" className={styles.navLink}>Entertainment</Nav.Link>
+                <Nav.Link href="#style" className={styles.navLink}>Style</Nav.Link>
+              </Nav>
+              <Nav>
+                <Form>
+                  <Form.Check
+                    className={`${styles.navLink} text-secondary`}
+                    type="switch"
+                    id="custom-switch"
+                    label="Dark Mode"
+                  />
+                </Form>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
+
+
+        <main>
+          <Container>
+            {children}
+          </Container>
+        </main>
+
+
+
+        
+        <footer className="bg-dark text-light mb-0 py-2">
+          <Nav className="justify-content-center">
+            <Nav.Item>
+              <Nav.Link href="/home" className="small text-light">Politics</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/home" className="small text-light">Business</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/home" className="small text-light">Local News</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/home" className="small text-light">Health</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/home" className="small text-light">Sports</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/home" className="small text-light">Entertainment</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/home" className="small text-light">Style</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+            <Nav.Link href="" className="small text-light">&copy;{new Date().getFullYear()} Niger Delta News Blog</Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </footer>
       </div>
     )
 }
