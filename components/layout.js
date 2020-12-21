@@ -41,13 +41,15 @@ export default function Layout({ children }) {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
-                <Nav.Link href="#politics" className={styles.navLink}>Politics</Nav.Link>
-                <Nav.Link href="#business" className={styles.navLink}>Business</Nav.Link>
-                <Nav.Link href="#local" className={styles.navLink}>Local News</Nav.Link>
-                <Nav.Link href="#health" className={styles.navLink}>Health</Nav.Link>
-                <Nav.Link href="#sports" className={styles.navLink}>Sports</Nav.Link>
-                <Nav.Link href="#entertainment" className={styles.navLink}>Entertainment</Nav.Link>
-                <Nav.Link href="#style" className={styles.navLink}>Style</Nav.Link>
+                <Link href="/politics">
+                  <a className={`${styles.navLink} text-light nav-link`}>Politics</a>
+                </Link>
+                <Nav.Link className={`${styles.navLink} text-light`}>Business</Nav.Link>
+                <Nav.Link className={`${styles.navLink} text-light`}>Local News</Nav.Link>
+                <Nav.Link className={`${styles.navLink} text-light`}>Health</Nav.Link>
+                <Nav.Link className={`${styles.navLink} text-light`}>Sports</Nav.Link>
+                <Nav.Link className={`${styles.navLink} text-light`}>Entertainment</Nav.Link>
+                <Nav.Link className={`${styles.navLink} text-light`}>Style</Nav.Link>
               </Nav>
               <Nav>
                 <Form>
